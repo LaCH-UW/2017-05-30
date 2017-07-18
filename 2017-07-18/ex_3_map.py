@@ -44,7 +44,7 @@ if __name__ == '__main__':
             lat=[place.lat],
             text='<br>'.join([str(len(place.popes))] + place.popes[:30]),
             marker=dict(
-                size=max(30, 5 + len(place.popes)),
+                size=min(30, 5 + len(place.popes)),
                 color='rgb(' + str(i * 10 % 255) + ',' + str((100 + i * 10) % 255) + ',150)',
                 line=dict(width=0)
             ),
