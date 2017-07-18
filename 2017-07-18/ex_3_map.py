@@ -9,10 +9,11 @@ from task_1_pope_birthplaces import pob_known_json_fname, load_places
 
 data = []
 
-coord_re = re.compile(r'(\d+)°(\d+)′(?:(\d+)″)?(.)')
+coord_re = re.compile(r'(\d+)°(?:(\d+)′)?(?:(\d+)″)?(.)')
 
 
 def convert_coords(wiki_str):
+    print(wiki_str)
     m = coord_re.match(wiki_str)
     assert m
     deg, min, sec, card = m.groups()
@@ -43,7 +44,7 @@ if __name__ == '__main__':
             lat=[place.lat],
             text='<br>'.join([str(len(place.popes))] + place.popes[:30]),
             marker=dict(
-                size=min(30, 5 + len(place.popes)),
+                size=max(30, 5 + len(place.popes)),
                 color='rgb(' + str(i * 10 % 255) + ',' + str((100 + i * 10) % 255) + ',150)',
                 line=dict(width=0)
             ),
